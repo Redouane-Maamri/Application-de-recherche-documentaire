@@ -1,11 +1,12 @@
-from pathlib import Path
+# DOSSIER DE LANCEMENT — DOCUMIND AI
 
-content = r"""# Dossier de lancement — DocuMind AI
-**Semaine 1 · 9 novembre 2026**  
-**Projet :** DocuMind AI — Assistant intelligent de recherche documentaire basé sur le RAG  
-**Équipe :** [Noms des membres à compléter] · **Encadrant :** [Nom à compléter]
+**Semaine 1 — 9 novembre 2026**
 
-> Version préremplie à partir des informations connues sur DocuMind AI. Les éléments inconnus (noms, taille de l'équipe, volume réel du corpus et licences de documents externes) restent signalés comme éléments à confirmer. Les technologies indiquées comme « prévues » ne doivent pas être présentées comme déjà réalisées.
+**Projet :** DocuMind AI — Assistant intelligent de recherche documentaire basé sur le RAG
+
+**Membres de l'équipe :**
+- Redouane Maamri
+- Mouad Sekkoumi
 
 ---
 
@@ -13,16 +14,19 @@ content = r"""# Dossier de lancement — DocuMind AI
 
 | Livrable | Rédacteur | Relecteur | Fichier |
 |---|---|---|---|
-| 1. Descriptif | [Membre A] | [Membre B] | `docs/semaine1/1-descriptif.md` |
-| 2. Dataset | [Membre B] | [Membre C] | `docs/semaine1/2-dataset.md` + `data/sample/` |
-| 3. Maquette | [Membre C] | [Membre A] | `docs/semaine1/3-maquette.md` + `docs/semaine1/img/` |
-| 4. Pipeline | [Membre D / coordinateur] | [Membre A] | `docs/semaine1/4-pipeline.md` |
+| 1. Descriptif du projet | Redouane Maamri | Mouad Sekkoumi | `docs/semaine1/1-descriptif.md` |
+| 2. Dataset | Mouad Sekkoumi | Redouane Maamri | `docs/semaine1/2-dataset.md` + `data/sample/` |
+| 3. Maquette globale | Redouane Maamri | Mouad Sekkoumi | `docs/semaine1/3-maquette.md` + `docs/semaine1/img/` |
+| 4. Pipeline des tâches | Mouad Sekkoumi | Redouane Maamri | `docs/semaine1/4-pipeline.md` |
 
-Adapter cette répartition à la taille réelle de l'équipe. Le rédacteur et le relecteur d'un même livrable doivent être deux personnes différentes. Chaque membre ajoute lui-même ses tâches au pipeline.
+**Organisation :** L'équipe est composée de deux étudiants. Redouane Maamri prend en charge les livrables 1 et 3, tandis que Mouad Sekkoumi prend en charge les livrables 2 et 4. Chaque membre relit les livrables de son collègue. Mouad Sekkoumi consolide le pipeline, mais chacun ajoute personnellement ses propres tâches.
 
-# Livrable 1 — Descriptif du projet
+---
 
-**Rédacteur :** [Nom] · **Relecteur :** [Nom]
+# LIVRABLE 1 — DESCRIPTIF DU PROJET
+
+**Rédacteur :** Redouane Maamri  
+**Relecteur :** Mouad Sekkoumi
 
 ## 1.1 Contexte et problème
 
@@ -37,6 +41,7 @@ Développer un assistant documentaire local capable d'importer des PDF, d'en ext
 **Utilisateurs :** étudiants, enseignants, chercheurs et professionnels qui doivent consulter plusieurs documents PDF.
 
 **Scénario :**
+
 1. L'utilisateur ouvre DocuMind AI dans son navigateur.
 2. Il importe un ou plusieurs fichiers PDF.
 3. Le système extrait le texte page par page, le découpe en segments (*chunks*) et calcule leurs embeddings localement.
@@ -63,9 +68,9 @@ Développer un assistant documentaire local capable d'importer des PDF, d'en ext
 | Recherche / mémoire | Stocker les segments et effectuer la recherche vectorielle. | ChromaDB | Base vectorielle persistante et intégration simple en Python. |
 | Extraction PDF | Extraire le texte et les numéros de page. | Python + pypdf | Bibliothèque légère adaptée aux PDF textuels. |
 | Orchestration RAG | Coordonner ingestion, recherche, contexte et génération. | Python (`src/`) | Séparation claire des responsabilités du projet. |
-| API | Exposer le service de question-réponse. | FastAPI **[prévu / à confirmer]** | API Python légère avec documentation automatique. |
+| API | Exposer le service de question-réponse. | FastAPI (prévu / à confirmer) | API Python légère avec documentation automatique. |
 | Interface | Importer les documents et interroger l'assistant. | Streamlit | Développement rapide d'une interface de démonstration. |
-| Conteneurisation et CI | Reproduire l'environnement et automatiser les vérifications. | Docker, GitHub Actions **[à mettre en place]** | Faciliter le lancement et vérifier le code à chaque modification. |
+| Conteneurisation et CI | Reproduire l'environnement et automatiser les vérifications. | Docker, GitHub Actions (à mettre en place) | Faciliter le lancement et vérifier le code à chaque modification. |
 
 **État technique connu :** l'application Streamlit appelle actuellement les modules Python ; l'ingestion et la recherche utilisent ChromaDB et Ollama localement. FastAPI, Docker et GitHub Actions sont à traiter comme des objectifs tant qu'ils ne sont pas effectivement intégrés et testés.
 
@@ -83,16 +88,12 @@ Développer un assistant documentaire local capable d'importer des PDF, d'en ext
 
 Le projet est concrétisé sous la forme d'une application locale appelée **DocuMind AI**. Ollama exécute le LLM et le modèle d'embeddings localement ; ChromaDB assure le stockage vectoriel ; Streamlit fournit l'interface. FastAPI, Docker et GitHub Actions sont conservés comme objectifs techniques à réaliser ou à confirmer dans le cadre du projet.
 
-**Critères d'acceptation :**
-- [x] Problème et utilisateurs explicités.
-- [x] Fonctionnalités démontrables et priorisées.
-- [x] Composants techniques et justifications renseignés.
-- [x] Hors périmètre défini.
-- [ ] Taille de l'équipe et nombre de fonctionnalités confirmés avec l'enseignant.
+---
 
-# Livrable 2 — Dataset
+# LIVRABLE 2 — DATASET
 
-**Rédacteur :** [Nom] · **Relecteur :** [Nom]
+**Rédacteur :** Mouad Sekkoumi  
+**Relecteur :** Redouane Maamri
 
 ## 2.1 Description
 
@@ -102,7 +103,7 @@ Le jeu de données de DocuMind AI est constitué de fichiers PDF importés par l
 |---|---|
 | Nom et source | Corpus PDF de démonstration DocuMind AI, constitué de documents synthétiques et/ou de documents publics dont la licence aura été vérifiée. |
 | Producteur / propriétaire | Équipe projet pour les documents synthétiques ; éditeurs d'origine pour les documents publics. |
-| Volume | Cible : 5 à 10 PDF, moins de 10 Mo au total. **Volume réel à mesurer après création de `data/sample/`.** |
+| Volume | Cible : 5 à 10 PDF, moins de 10 Mo au total. Volume réel à mesurer après création de `data/sample/`. |
 | Format et structure | PDF textuels. Extraction page par page ; chaque chunk conserve le texte, le nom du fichier, le numéro de page et son index. |
 | Langues / période | Français et anglais ; période non applicable aux documents synthétiques. À préciser pour les documents publics choisis. |
 | Licence et droits | Documents synthétiques : créés par l'équipe. Documents publics : licence et conditions de réutilisation à vérifier fichier par fichier. |
@@ -113,7 +114,18 @@ Le jeu de données de DocuMind AI est constitué de fichiers PDF importés par l
 
 ## 2.2 Qualité constatée sur l'échantillon
 
-Après constitution du corpus, l'équipe vérifiera : ouverture des PDF, extraction du texte, pages vides, caractères spéciaux et accents, doublons, lisibilité et présence éventuelle de données personnelles. Les PDF scannés sans couche texte seront exclus du MVP. **Les résultats de ce contrôle sont à compléter après inspection réelle des fichiers.**
+Après constitution du corpus, l'équipe vérifiera :
+
+- L'ouverture des PDF et l'extraction du texte.
+- Les pages vides ou dont le texte est illisible.
+- Les caractères spéciaux et les accents.
+- Les documents dupliqués.
+- La présence éventuelle de données personnelles.
+- La quantité de contenu disponible pour créer des questions de test.
+
+Les PDF scannés sans couche texte seront exclus du MVP.
+
+**État du contrôle :** à compléter après inspection réelle des fichiers déposés dans `data/sample/`.
 
 ## 2.3 Justification
 
@@ -128,37 +140,42 @@ Après constitution du corpus, l'équipe vérifiera : ouverture des PDF, extract
 
 Si les documents publics deviennent inaccessibles ou si leur licence est incertaine, l'équipe utilisera des PDF synthétiques rédigés pour le projet : fiches de cours fictives, notices techniques, descriptions de produits imaginaires et rapports de démonstration.
 
-**Avantage :** disponibilité immédiate, contenu maîtrisé et absence de données personnelles réelles.  
+**Avantage :** disponibilité immédiate, contenu maîtrisé et absence de données personnelles réelles.
+
 **Limite :** ces documents représentent moins bien la diversité et la difficulté des documents professionnels réels ; ils valident le fonctionnement technique, pas toutes les performances en situation réelle.
 
 ## 2.5 Jeu de test et mesure de la qualité
 
-L'équipe préparera **au moins 20 questions** : questions factuelles, questions nécessitant plusieurs passages, questions limitées à un document, questions dont la réponse se trouve dans un autre document et questions sans réponse dans le corpus.
+L'équipe préparera **au moins 20 questions** :
+
+- Questions factuelles.
+- Questions nécessitant plusieurs passages.
+- Questions limitées à un document.
+- Questions dont la réponse se trouve dans un autre document.
+- Questions sans réponse dans le corpus.
 
 Pour chaque test : identifiant, question, document attendu, page ou passage attendu, éléments attendus dans la réponse et résultat obtenu.
 
-- **Origine :** questions rédigées par l'équipe à partir du corpus.
-- **Références attendues :** définies par un membre et vérifiées par un autre.
-- **Indicateurs :**
-  1. *Recall@k* : présence du passage attendu parmi les k passages récupérés.
-  2. Exactitude : proportion des éléments attendus correctement restitués.
-  3. Fidélité : absence d'affirmations non soutenues par les documents.
-  4. Qualité des citations : exactitude du fichier et du numéro de page.
-  5. Temps de réponse : durée entre l'envoi de la question et l'affichage de la réponse.
+**Origine :** questions rédigées par l'équipe à partir du corpus.
 
-Les seuils chiffrés seront fixés après une première mesure sur le jeu de test, et non inventés à l'avance.
+**Références attendues :** définies par un membre et vérifiées par l'autre.
 
-**Critères d'acceptation :**
-- [ ] PDF d'exemple présents dans `data/sample/` et ouvrables.
-- [ ] Licences des documents publics vérifiées.
-- [ ] Aucun document personnel non autorisé versionné.
-- [ ] Chaque fonctionnalité du MVP couverte par le corpus.
-- [ ] Alternative de repli disponible.
-- [ ] Jeu d'au moins 20 questions avec réponses et passages attendus préparé.
+**Indicateurs :**
 
-# Livrable 3 — Maquette globale
+1. *Recall@k* : présence du passage attendu parmi les k passages récupérés.
+2. Exactitude : proportion des éléments attendus correctement restitués.
+3. Fidélité : absence d'affirmations non soutenues par les documents.
+4. Qualité des citations : exactitude du fichier et du numéro de page.
+5. Temps de réponse : durée entre l'envoi de la question et l'affichage de la réponse.
 
-**Rédacteur :** [Nom] · **Relecteur :** [Nom]
+Les seuils chiffrés seront fixés après une première mesure sur le jeu de test.
+
+---
+
+# LIVRABLE 3 — MAQUETTE GLOBALE
+
+**Rédacteur :** Redouane Maamri  
+**Relecteur :** Mouad Sekkoumi
 
 ## 3.1 Schéma d'architecture cible
 
@@ -216,15 +233,12 @@ Les captures ou maquettes doivent être ajoutées à `docs/semaine1/img/`. Les n
 5. La réponse s'affiche avec les références documentaires et les pages.
 6. L'utilisateur peut poser une autre question ; l'historique de la session reste visible.
 
-**Critères d'acceptation :**
-- [x] Le schéma décrit l'ingestion et le parcours d'une question jusqu'à la réponse.
-- [ ] Le schéma final correspond exactement à l'architecture réellement implémentée.
-- [ ] Les captures/maquettes sont déposées dans `docs/semaine1/img/`.
-- [ ] Chaque fonctionnalité du MVP apparaît sur au moins un écran.
+---
 
-# Livrable 4 — Pipeline des tâches
+# LIVRABLE 4 — PIPELINE DES TÂCHES
 
-**Consolidateur :** [Nom du coordinateur] · **Relecteur :** [Nom]
+**Consolidateur :** Mouad Sekkoumi  
+**Relecteur :** Redouane Maamri
 
 **Hypothèse de calendrier :** démarrage le 16 novembre 2026, à confirmer avec l'enseignant. Chaque tâche est estimée à un ou deux jours maximum.
 
@@ -232,19 +246,19 @@ Les captures ou maquettes doivent être ajoutées à `docs/semaine1/img/`. Les n
 
 | ID | Tâche | Fonction | Responsable | Dépend de | Semaine | Critère vérifiable de fin |
 |---|---|---|---|---|---|---|
-| T1 | Finaliser dépôt, environnement Python et README | Transverse | [Membre A] | — | 1 | Un membre peut cloner, installer et lancer le projet en suivant le README. |
-| T2 | Constituer et contrôler le corpus PDF | F1 | [Membre B] | T1 | 1 | Au moins 5 PDF non sensibles sont présents dans `data/sample/`, ouvrables et décrits. |
-| T3 | Vérifier extraction, découpage et métadonnées | F1 | [Membre A] | T2 | 1 | Les tests vérifient texte, page, source et découpage sur les PDF d'exemple. |
-| T4 | Stabiliser l'indexation dans ChromaDB | F1, F2 | [Membre B] | T3 | 2 | Les vecteurs et métadonnées sont persistés ; réindexer un document ne crée pas de doublons. |
-| T5 | Tester la recherche sémantique et le filtre par document | F2, F4 | [Membre C] | T4 | 2 | Les questions de test retrouvent les passages attendus et le filtre isole le document choisi. |
-| T6 | Stabiliser génération RAG et citations | F3 | [Membre C] | T5 | 2 | Réponses fondées sur le contexte, avec fichier/page ; absence de réponse signalée si nécessaire. |
-| T7 | Finaliser l'interface Streamlit | F1 à F4 | [Membre A] | T4, T6 | 3 | Import, sélection, question et réponse sourcée fonctionnent de bout en bout. |
-| T8 | Ajouter/finaliser FastAPI si exigée | F2, F3 | [Membre D] | T6 | 3 | `/ask` reçoit une question et retourne réponse et sources ; tests API réussis. |
-| T9 | Préparer Docker et GitHub Actions | Transverse | [Membre D] | T7, T8 | 3 | Image construite et tests automatisés réussis dans GitHub Actions. |
-| T10 | Évaluer sur 20 questions et corriger | F1 à F4 | Tous | T7, T8, T9 | 4 | Résultats et indicateurs des 20 tests consignés. |
-| T11 | Finaliser documentation et démonstration | Transverse | Tous | T10 | 4 | README, architecture, limites, résultats et scénario de démonstration à jour. |
+| T1 | Finaliser dépôt, environnement Python et README | Transverse | Redouane Maamri | — | 1 | Un membre peut cloner, installer et lancer le projet en suivant le README. |
+| T2 | Constituer et contrôler le corpus PDF | F1 | Mouad Sekkoumi | T1 | 1 | Au moins 5 PDF non sensibles sont présents dans `data/sample/`, ouvrables et décrits. |
+| T3 | Vérifier extraction, découpage et métadonnées | F1 | Redouane Maamri | T2 | 1 | Les tests vérifient texte, page, source et découpage sur les PDF d'exemple. |
+| T4 | Stabiliser l'indexation dans ChromaDB | F1, F2 | Mouad Sekkoumi | T3 | 2 | Les vecteurs et métadonnées sont persistés ; réindexer un document ne crée pas de doublons. |
+| T5 | Tester la recherche sémantique et le filtre par document | F2, F4 | Redouane Maamri | T4 | 2 | Les questions de test retrouvent les passages attendus et le filtre isole le document choisi. |
+| T6 | Stabiliser génération RAG et citations | F3 | Redouane Maamri | T5 | 2 | Réponses fondées sur le contexte, avec fichier/page ; absence de réponse signalée si nécessaire. |
+| T7 | Finaliser l'interface Streamlit | F1 à F4 | Redouane Maamri | T4, T6 | 3 | Import, sélection, question et réponse sourcée fonctionnent de bout en bout. |
+| T8 | Ajouter/finaliser FastAPI si exigée | F2, F3 | Mouad Sekkoumi | T6 | 3 | `/ask` reçoit une question et retourne réponse et sources ; tests API réussis. |
+| T9 | Préparer Docker et GitHub Actions | Transverse | Mouad Sekkoumi | T7, T8 | 3 | Image construite et tests automatisés réussis dans GitHub Actions. |
+| T10 | Évaluer sur 20 questions et corriger | F1 à F4 | Redouane Maamri et Mouad Sekkoumi | T7, T8, T9 | 4 | Résultats et indicateurs des 20 tests consignés. |
+| T11 | Finaliser documentation et démonstration | Transverse | Redouane Maamri et Mouad Sekkoumi | T10 | 4 | README, architecture, limites, résultats et scénario de démonstration à jour. |
 
-Les responsables sont proposés et doivent être confirmés par l'équipe. Pour une équipe de moins de quatre membres, redistribuer T8 et T9. Si FastAPI n'est pas exigée, supprimer T8 et adapter T9. Chaque membre doit saisir lui-même ses tâches dans GitHub Issues ou GitHub Projects.
+Les responsabilités sont réparties entre les deux membres. Redouane Maamri prend notamment en charge la préparation de l'environnement, les vérifications d'extraction, la recherche et l'interface ; Mouad Sekkoumi prend en charge le corpus, l'indexation, l'API éventuelle et la conteneurisation. Les deux membres réalisent ensemble l'évaluation et la préparation de la soutenance. Si FastAPI n'est pas exigée, supprimer T8 et adapter T9. Chaque membre saisit lui-même ses tâches dans GitHub Issues ou GitHub Projects.
 
 ## 4.2 Jalons hebdomadaires
 
@@ -283,19 +297,11 @@ gantt
 
 **Chemin critique prévisionnel :** T1 → T2 → T3 → T4 → T5 → T6 → T7 → T10 → T11. Si FastAPI est obligatoire, T8 et T9 deviennent également des dépendances du jalon MVP.
 
-**Charge par membre :** à calculer après confirmation des responsables et de la taille de l'équipe. Le coordinateur doit rééquilibrer les tâches pour que l'écart de charge entre membres reste inférieur à deux jours.
-
-**Critères d'acceptation :**
-- [ ] Aucune tâche ne dépasse deux jours.
-- [ ] Chaque fonctionnalité a au moins une tâche ; chaque tâche possède un critère vérifiable.
-- [ ] MVP démontrable au plus tard à la fin de la semaine 3.
-- [ ] Chaque membre a ajouté ses propres tâches.
-- [ ] Écart de charge inférieur à deux jours.
-- [ ] Issues GitHub ou éléments GitHub Projects créés.
+**Charge par membre :** à calculer après confirmation des durées réelles. Le coordinateur doit rééquilibrer les tâches pour que l'écart de charge entre Redouane Maamri et Mouad Sekkoumi reste inférieur à deux jours.
 
 ---
 
-# Remise et décision de l'enseignant
+# REMISE ET DÉCISION DE L'ENSEIGNANT
 
 ## Checklist du coordinateur
 
@@ -322,23 +328,19 @@ gantt
 | Tâches courtes, critères vérifiables et charge équilibrée (L4) | À améliorer | ☐ | |
 | Alternative de repli et jeu de test définis (L2) | À améliorer | ☐ | |
 
-**Décision :** ☐ Validé  ☐ À reprendre  ☐ Refusé (changement de sujet)  
+**Décision :** ☐ Validé  ☐ À reprendre  ☐ Refusé (changement de sujet)
+
 **Date et visa :** ______________________________________
 
 **Lien avec l'évaluation :** ce dossier sert de référence au critère P1 (respect du cadrage) et alimente P3 (jeu de test et indicateurs) et P7 (pipeline et suivi). La répartition des contributions et les pull requests constituent des preuves de travail individuel.
 
 ---
 
-## À confirmer avant l'envoi
+## Points à confirmer avant l'envoi
 
-1. Remplacer les membres A/B/C/D par les noms réels et adapter la répartition à la taille de l'équipe.
-2. Confirmer que chaque rédacteur et relecteur est une personne différente.
-3. Ajouter les PDF d'exemple dans `data/sample/`, mesurer le volume et vérifier les licences. Ne pas déposer les CV personnels.
-4. Confirmer si FastAPI est obligatoire. Le code connu utilise actuellement Streamlit et les modules Python directement.
-5. Ne présenter Docker et GitHub Actions comme réalisés qu'après leur mise en place et leurs tests.
-6. Confirmer les dates du 16 novembre au 13 décembre 2026 avec l'enseignant.
-7. Créer les captures/maquettes et les déposer dans `docs/semaine1/img/`.
-"""
-path = Path("/mnt/data/DocuMind_AI_Dossier_Lancement_Semaine1.md")
-path.write_text(content, encoding="utf-8")
-print(f"Document prêt : {path.name} ({len(content.splitlines())} lignes)")
+1. Confirmer que la répartition correspond bien à votre organisation : Redouane Maamri (livrables 1 et 3) et Mouad Sekkoumi (livrables 2 et 4).
+2. Ajouter les PDF d'exemple dans `data/sample/`, mesurer le volume et vérifier les licences. Ne pas déposer les CV personnels.
+3. Confirmer si FastAPI est obligatoire. Le code connu utilise actuellement Streamlit et les modules Python directement.
+4. Ne présenter Docker et GitHub Actions comme réalisés qu'après leur mise en place et leurs tests.
+5. Confirmer les dates du 16 novembre au 13 décembre 2026 avec l'enseignant.
+6. Créer les captures/maquettes et les déposer dans `docs/semaine1/img/`.
