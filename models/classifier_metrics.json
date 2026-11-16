@@ -1,0 +1,19 @@
+{
+    "model": "TF-IDF + Logistic Regression",
+    "documents": 7,
+    "categories": {
+        "academic": 3,
+        "technical": 2,
+        "business": 2
+    },
+    "cross_validation": {
+        "method": "StratifiedKFold",
+        "folds": 2,
+        "f1_macro_scores": [
+            1.0,
+            1.0
+        ],
+        "mean_f1_macro": 1.0
+    },
+    "warning": "Very small dataset. Results are preliminary and do not demonstrate reliable real-world performance."
+}
